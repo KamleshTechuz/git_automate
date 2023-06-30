@@ -13,11 +13,11 @@ This Git Automation Script simplifies your Git workflow, saves time, and helps a
 
 Follow these steps to start using the Git Automation Script in your project:
 
-1. Clone the repository: `git clone [repository URL]`.
-2. Copy the `git-automation.sh` script into your project directory.
-3. Customize the `BRANCH_NAME` variable in the script to match your specific repository branch.
-4. Make the script executable: `chmod +x git-automation.sh`.
-5. Run the script: `./git-automation.sh`.
+1. Clone the repository: `git clone https://github.com/KamleshTechuz/git_automate.git`.
+2. Copy the `git_auto.sh` script into your project directory.
+3. Customize the `pull_branch` and the `push_branch` variable in the script to match your specific repository branches.
+4. Make the script executable: `chmod +x git_auto.sh`.
+5. Run the script: `./git_auto.sh`.
 6. Follow the prompts to enter your commit message and let the script handle the Git operations for you.
 
 ## Requirements
