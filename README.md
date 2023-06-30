@@ -33,10 +33,6 @@ Contributions are welcome! If you find any issues or have ideas for enhancements
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Acknowledgements
-
-A special thank you to all the contributors who helped make this Git Automation Script possible.
-
 ## Questions or Feedback
 
 If you have any questions or feedback, feel free to reach out. You can find my contact information in the repository.
