@@ -29,10 +29,6 @@ Follow these steps to start using the Git Automation Script in your project:
 
 Contributions are welcome! If you find any issues or have ideas for enhancements, please open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Questions or Feedback
 
 If you have any questions or feedback, feel free to reach out. You can find my contact information in the repository.
