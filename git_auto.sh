@@ -1,11 +1,8 @@
 #!/bin/bash
 
 # Branch name declaration
-pull_branch="master" # branch name from which you want to take pull befor push.
+pull_branch="master" # branch name from which you want to take pull before push.
 push_branch="development" # branch name in which you want to push.
-
-# Prompt for commit message
-read -p "Enter commit message: " commit_message
 
 # Define color variables
 green='\033[0;32m'
@@ -22,12 +19,6 @@ print_success() {
     echo -e "${green}$1${reset}"
 }
 
-# Check if the commit message is empty
-if [[ -z "$commit_message" ]]; then
-    print_error "Commit message is required."
-    exit 1
-fi
-
 # Check if Git is installed
 if ! command -v git &> /dev/null; then
     print_error "Git is not installed. Please install Git and try again."
@@ -42,39 +33,44 @@ fi
 
 # Check if there are any changes to commit
 if [[ -n $(git status -s) ]]; then
-    print_success "Changes detected. Proceeding with commit and push."
-else
-    print_success "No changes detected. Exiting script."
-    exit 0
+    # Prompt for commit message
+    read -p "Enter commit message: " commit_message
+
+    # Check if the commit message is empty
+    if [[ -z "$commit_message" ]]; then
+        print_error "Commit message is required."
+        exit 1
+    fi
+
+    # Perform git add and commit
+    git add .
+    git commit -m "$commit_message"
+
+    if [[ $? -ne 0 ]]; then
+        print_error "Failed to commit changes."
+        exit 1
+    fi
+
+    print_success "Changes committed successfully."
 fi
 
 # Perform git operations
-git add .
-git commit -m "$commit_message"
-
-if [[ $? -ne 0 ]]; then
-    print_error "Failed to commit changes."
-    exit 1
-fi
-
-print_success "Changes committed successfully."
-
 git pull origin "$pull_branch"
 
 if [[ $? -ne 0 ]]; then
-    print_error "Pulling from origin master failed."
+    print_error "Pulling from origin $pull_branch failed."
     exit 1
 fi
 
-print_success "Pull from origin master successful."
+print_success "Pull from origin $pull_branch successful."
 
 git push origin "$push_branch"
 
 if [[ $? -ne 0 ]]; then
-    print_error "Pushing to origin $branch failed."
+    print_error "Pushing to origin $push_branch failed."
     exit 1
 fi
 
-print_success "Push to origin $branch successful."
+print_success "Push to origin $push_branch successful."
 
 print_success "Git operations completed successfully."
